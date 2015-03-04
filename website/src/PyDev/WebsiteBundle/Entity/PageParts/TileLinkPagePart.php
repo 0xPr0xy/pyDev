@@ -144,16 +144,6 @@ class TileLinkPagePart extends \Kunstmaan\PagePartBundle\Entity\AbstractPagePart
     }
 
     /**
-     * Get the twig adnin view.
-     *
-     * @return string
-     */
-    public function getAdminView()
-    {
-        return 'PyDevWebsiteBundle:PageParts:TileLinkPagePart/admin-view.html.twig';
-    }
-
-    /**
      * Get the admin form type.
      *
      * @return \PyDev\WebsiteBundle\Form\PageParts\TileLinkPagePartAdminType
