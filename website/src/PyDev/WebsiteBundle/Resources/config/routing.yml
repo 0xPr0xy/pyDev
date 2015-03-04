@@ -1,0 +1,5 @@
+pydevwebsitebundle_default:
+    resource: "@PyDevWebsiteBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /
+
