@@ -1,0 +1,4 @@
+name: Menu
+context: menu
+types:
+    - { name: TileLink, class: PyDev\WebsiteBundle\Entity\PageParts\TileLinkPagePart }
