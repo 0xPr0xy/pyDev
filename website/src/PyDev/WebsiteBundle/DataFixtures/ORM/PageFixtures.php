@@ -22,10 +22,6 @@ class PageFixtures extends AbstractFixture implements OrderedFixtureInterface, C
      */
     const ADMIN_USERNAME = 'admin';
 
-    private $languages = ['en'];
-
-    private $translateMePrefix = 'TRANSLATE_ME ';
-
     /** @var ContainerInterface */
     private $container = null;
 
@@ -40,7 +36,7 @@ class PageFixtures extends AbstractFixture implements OrderedFixtureInterface, C
 
     /** @var MediaCreatorService */
     private $mediaCreator;
-    
+
     /**
      * Load data fixtures with the passed EntityManager.
      *
@@ -53,10 +49,10 @@ class PageFixtures extends AbstractFixture implements OrderedFixtureInterface, C
         $this->pageCreator     = $this->container->get('kunstmaan_node.page_creator_service');
         $this->pagePartCreator = $this->container->get('kunstmaan_pageparts.pagepart_creator_service');
         $this->mediaCreator    = $this->container->get('kunstmaan_media.media_creator_service');
-        
+
         $this->createPages();
     }
-    
+
     /**
      * Create pages
      */

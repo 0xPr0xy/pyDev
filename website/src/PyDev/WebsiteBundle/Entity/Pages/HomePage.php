@@ -33,16 +33,7 @@ class HomePage extends AbstractPage  implements HasPageTemplateInterface
      */
     public function getPossibleChildTypes()
     {
-        return array(
-            array(
-                'name'  => 'ContentPage',
-                'class' => 'PyDev\WebsiteBundle\Entity\Pages\ContentPage'
-            ),
-            array(
-                'name'  => 'BehatTestPage',
-                'class' => 'PyDev\WebsiteBundle\Entity\Pages\BehatTestPage'
-            )
-        );
+        return array();
     }
 
     /**
@@ -50,7 +41,7 @@ class HomePage extends AbstractPage  implements HasPageTemplateInterface
      */
     public function getPagePartAdminConfigurations()
     {
-        return array('PyDevWebsiteBundle:middle-column', 'PyDevWebsiteBundle:left-column', 'PyDevWebsiteBundle:right-column');
+        return array('PyDevWebsiteBundle:menu');
     }
 
     /**
