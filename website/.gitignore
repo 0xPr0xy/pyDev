@@ -5,6 +5,7 @@
 .settings
 .buildpath
 .idea
+.sass-cache/
 
 /web/bundles/
 /app/bootstrap.php.cache
