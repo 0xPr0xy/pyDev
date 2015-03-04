@@ -1,0 +1,38 @@
+.tile-link-pp{
+    position: relative;
+    width: 20%;
+    min-width: 85px;
+    max-width: 200px;
+    overflow: hidden;
+    background: #4679BD;
+    float:left;
+}
+.tile-link-pp:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+.tile-link-pp-content{
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: white;
+}
+.tile-link-pp-content div {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.tile-link-pp-content span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: white
+}
+.tile-link-pp a {
+    color:white;
+    font-family: "Arial", Arial, sans-serif;
+    text-decoration: none;
+}
