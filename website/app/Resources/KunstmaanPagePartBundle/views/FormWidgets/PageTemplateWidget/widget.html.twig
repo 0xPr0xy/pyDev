@@ -8,7 +8,7 @@
             {% for region in row.regions %}
                 <div class="span{{ region.span }}">
                     <div class="template-block">
-                        <h5 onclick="$('.pagepartscontainer').fadeToggle();" style="cursor:pointer;">
+                        <h5 onclick="$(this).parent().find('.pagepartscontainer').fadeToggle();" style="cursor:pointer;">
                         {{ region.name|replace({'_':' '})|title }}
                         </h5>
                         {% set widget = resource.getFormWidget(region.name) %}
