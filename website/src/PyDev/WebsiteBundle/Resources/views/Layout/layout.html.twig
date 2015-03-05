@@ -39,6 +39,12 @@
 {% block pagetitle %}
 {% endblock %}
 
+{% set children = nodemenu.current.node.children %}
+{% if nodemenu.current.node.children|length > 0 %}
+    {% set activeSubnode = nodemenu.getActiveForDepth(1) %}
+    {% include 'PyDevWebsiteBundle:Layout:submenu.html.twig' with {'items': activeSubnode.children} %}
+{% endif %}
+
 {% block menu %}
 {% endblock %}
 
@@ -48,10 +54,18 @@
 {% block footer %}
 {% endblock %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 {% block js_includes %}
+    {% javascripts
+    '@PyDevWebsiteBundle/Resources/public/js/*'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 {% block js_inits %}
 {% endblock %}
+
 </body>
 </html>
