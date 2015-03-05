@@ -33,7 +33,12 @@ class HomePage extends AbstractPage  implements HasPageTemplateInterface
      */
     public function getPossibleChildTypes()
     {
-        return array();
+        return array(
+            array(
+                'name'  => 'Page',
+                'class' => ContentPage::class
+            ),
+        );
     }
 
     /**
