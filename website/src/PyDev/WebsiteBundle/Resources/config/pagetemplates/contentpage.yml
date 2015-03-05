@@ -1,0 +1,5 @@
+name: "ContentPage"
+rows:
+    - regions:
+        - { name: "main", span: 12 }
+template: "PyDevWebsiteBundle::Pages\\ContentPage\\pagetemplate.html.twig"
