@@ -7,11 +7,10 @@ var myApplication = (function($, window, undefined) {
     /*
         declare all your methods here
     */
-    var init, initSocial;
+    var init;
 
     init = function() {
-        cupcake.navigation.init();
-        cupcake.slider.init();
+        
     };
 
     /*
