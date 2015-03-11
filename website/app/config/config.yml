@@ -16,8 +16,8 @@ twig:
         defaultlocale: %defaultlocale%
         requiredlocales: %requiredlocales%
         gtm_code: %analytics.googletagmanager%
-        #titlecolor: "#000000"
-        #titlebgcolor: "#2997CE"
+        titlecolor: "#000000"
+        titlebgcolor: "#2997CE"
 
 # Assetic Configuration
 assetic:
@@ -69,11 +69,11 @@ parameters:
 
 stof_doctrine_extensions:
     default_locale: %defaultlocale%
-    translation_fallback: true
+    #translation_fallback: true
     orm:
         default:
             loggable: true
-            translatable: true
+            #translatable: true
             sluggable: true
 
 liip_imagine:
@@ -105,10 +105,10 @@ services:
         tags:
             - { name: twig.extension }
 
-    twig.extension.intl:
-        class: Twig_Extensions_Extension_Intl
-        tags:
-            - { name: twig.extension }
+    #twig.extension.intl:
+    #    class: Twig_Extensions_Extension_Intl
+    #    tags:
+    #        - { name: twig.extension }
 
     kunstmaan_logging_introspection:
         class: Monolog\Processor\IntrospectionProcessor
@@ -123,20 +123,20 @@ services:
     kunstmaan_logging_formatter:
         class: Monolog\Formatter\LineFormatter
 
-    kunstmaan_newrelic_naming_strategy:
-        class: Kunstmaan\UtilitiesBundle\Helper\UrlTransactionNamingStrategy
+    #kunstmaan_newrelic_naming_strategy:
+    #    class: Kunstmaan\UtilitiesBundle\Helper\UrlTransactionNamingStrategy
 
 white_october_pagerfanta:
     default_view: twitter_bootstrap
 
-kunstmaan_translator:
-    enabled: true
-    managed_locales: ['nl', 'en', 'de', 'fr']
+#kunstmaan_translator:
+#    enabled: true
+#    managed_locales: ['nl', 'en', 'de', 'fr']
 
-ekino_new_relic:
-    enabled:        true
-    logging:        false
-    log_exceptions: true
-    log_commands:   true
-    transaction_naming: service
-    transaction_naming_service: kunstmaan_newrelic_naming_strategy
+#ekino_new_relic:
+#    enabled:        true
+#    logging:        false
+#    log_exceptions: true
+#    log_commands:   true
+#    transaction_naming: service
+#    transaction_naming_service: kunstmaan_newrelic_naming_strategy

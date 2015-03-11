@@ -3,13 +3,14 @@
 namespace PyDev\WebsiteBundle\Form\Pages;
 
 use Kunstmaan\NodeBundle\Form\PageAdminType;
+use PyDev\WebsiteBundle\Entity\Pages\ContentPage;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * The admin type for admin pages
  */
-class ContentPageAdminType extends PageAdminType
+class ContentPageAdminType extends AbstractColoredPageAdminType
 {
     /**
      * Builds the form.
@@ -27,7 +28,6 @@ class ContentPageAdminType extends PageAdminType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('backgroundColor', null, array('required' => true));
     }
 
     /**
@@ -38,7 +38,7 @@ class ContentPageAdminType extends PageAdminType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PyDev\WebsiteBundle\Entity\Pages\ContentPage'
+            'data_class' => ContentPage::class
         ));
     }
 

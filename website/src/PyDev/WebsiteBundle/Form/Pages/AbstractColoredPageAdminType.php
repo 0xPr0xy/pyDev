@@ -3,14 +3,14 @@
 namespace PyDev\WebsiteBundle\Form\Pages;
 
 use Kunstmaan\NodeBundle\Form\PageAdminType;
-use PyDev\WebsiteBundle\Entity\Pages\HomePage;
+use PyDev\WebsiteBundle\Entity\Pages\AbstractColoredPage;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * The admin type for home pages
+ * The admin type for abstract colored pages
  */
-class HomePageAdminType extends AbstractColoredPageAdminType
+class AbstractColoredPageAdminType extends PageAdminType
 {
     /**
      * Builds the form.
@@ -28,6 +28,7 @@ class HomePageAdminType extends AbstractColoredPageAdminType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
+        $builder->add('backgroundColor', 'color', array('required' => true));
     }
 
     /**
@@ -38,17 +39,17 @@ class HomePageAdminType extends AbstractColoredPageAdminType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => HomePage::class
+            'data_class' => AbstractColoredPage::class
         ));
     }
 
     /**
-     * @assert () == 'homepage'
+     * @assert () == 'abstractcoloredpage'
      *
      * @return string
      */
     public function getName()
     {
-        return 'homepage';
+        return 'abstractcoloredpage';
     }
 }

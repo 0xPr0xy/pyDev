@@ -2,4 +2,6 @@ name: "Home page"
 rows:
     - regions:
         - { name: "menu", span: 12 }
+    - regions:
+        - { name: "main", span: 12 }
 template: "PyDevWebsiteBundle::Pages\\HomePage\\pagetemplate.html.twig"

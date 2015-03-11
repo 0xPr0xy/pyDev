@@ -2,13 +2,10 @@
 
 namespace PyDev\WebsiteBundle\Entity\Pages;
 
+use PyDev\WebsiteBundle\Entity\Pages\AbstractColoredPage;
 use PyDev\WebsiteBundle\Form\Pages\ContentPageAdminType;
-use PyDev\WebsiteBundle\Form\Pages\HomePageAdminType;
-
 use Doctrine\ORM\Mapping as ORM;
-use Kunstmaan\NodeBundle\Entity\AbstractPage;
 use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
-use Symfony\Component\Form\AbstractType;
 
 /**
  * ContentPage
@@ -16,43 +13,12 @@ use Symfony\Component\Form\AbstractType;
  * @ORM\Entity()
  * @ORM\Table(name="pydev_websitebundle_content_pages")
  */
-class ContentPage extends AbstractPage  implements HasPageTemplateInterface
+class ContentPage extends AbstractColoredPage implements HasPageTemplateInterface
 {
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="background_color", type="string", length=255, nullable=true)
-     */
-    private $backgroundColor;
-
-    /**
-     * Set backgroundColor
-     *
-     * @param string $backgroundColor
-     * @return TileLinkPagePart
-     */
-    public function setBackgroundColor($backgroundColor)
-    {
-        $this->backgroundColor = $backgroundColor;
-
-        return $this;
-    }
-
-    /**
-     * Get backgroundColor
-     *
-     * @return string
-     */
-    public function getBackgroundColor()
-    {
-        return $this->backgroundColor;
-    }
-
     /**
      * Returns the default backend form type for this page
      *
-     * @return AbstractType
+     * @return ContentPageAdminType
      */
     public function getDefaultAdminType()
     {

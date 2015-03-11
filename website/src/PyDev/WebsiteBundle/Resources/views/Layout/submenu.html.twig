@@ -1,16 +1,38 @@
 <nav role="navigation">
-    <ul class="list-reset sub-navigation">
-    {% for node in items %}
-        {% if not node.node.isHiddenFromNav() %}
-            <li class="sub-navigation__item {% if(node.active) %}sub-navigation__item--active{% endif %}">
-                <a href="{{ path('_slug', { 'url': node.slug }) }}" class="sub-navigation__link">
-                    {{ node.title }}
-                    {% if(node.active) %}
-                        <i class="icon-chevron-right sub-navigation__link__icon"></i>
-                    {% endif %}
+    <div class="menu">
+        <div class='tile-link-pp'>
+            <div class='tile-link-pp-content' style="background-color:crimson">
+                <a href="{{ path('_slug', { 'url': '' }) }}">
+                    <div>
+                        <span>
+                            Home
+                        </span>
+                    </div>
                 </a>
-            </li>
+            </div>
+        </div>
+        {% for nodeMenuItem in items %}
+        {% if not nodeMenuItem.node.isHiddenFromNav() %}
+            {% set page = get_page(nodeMenuItem.node.refEntityName, nodeMenuItem.nodeTranslation.publicNodeVersion.refId) %}
+            {% if page|default %}
+                <div class='tile-link-pp flip-container'>
+                    <div class='tile-link-pp-content flipper {% if nodemenu.current == nodeMenuItem %}active{% endif %}' style="background-color:{{ page.backgroundColor }};">
+                        <a href="{{ path('_slug', { 'url': nodeMenuItem.slug }) }}">
+                            <div class="front">
+                                    <span>
+                                        {{ nodeMenuItem.title }}
+                                    </span>
+                            </div>
+                            <div class="back">
+                                    <span>
+                                        info: {{ page.backgroundColor }}
+                                    </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
         {% endif %}
     {% endfor %}
-    </ul>
+    </div>
 </nav>

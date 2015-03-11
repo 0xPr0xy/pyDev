@@ -37,14 +37,14 @@ KunstmaanSitemapBundle:
     prefix:   /
 
 # KunstmaanTranslatorBundle
-KunstmaanTranslatorBundle:
-    resource: "@KunstmaanTranslatorBundle/Resources/config/routing.yml"
-    prefix:   /
+#KunstmaanTranslatorBundle:
+#    resource: "@KunstmaanTranslatorBundle/Resources/config/routing.yml"
+#    prefix:   /
 
 # KunstmaanRedirectBundle
-KunstmaanRedirectBundle:
-    resource: "@KunstmaanRedirectBundle/Resources/config/routing.yml"
-    prefix:   /
+#KunstmaanRedirectBundle:
+#    resource: "@KunstmaanRedirectBundle/Resources/config/routing.yml"
+#    prefix:   /
 
 # KunstmaanUserManagementBundle
 KunstmaanUserManagementBundle:

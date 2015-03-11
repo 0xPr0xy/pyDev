@@ -194,13 +194,14 @@
         <!--=========Footer=========-->
         <footer>
             <div class="container-fluid">
-                <p class="pull-right">
+                <!--<p class="pull-right">
                     <a target="_blank" href="http://www.kunstmaan.be" class="kunstmaan-logo">
                         <object data="{{ asset('bundles/kunstmaanadmin/img/general/kunstmaan_dark.svg') }}" type="image/svg+xml">
                             <img src="{{ asset('bundles/kunstmaanadmin/img/general/kunstmaan_dark.png') }}" alt="Kunstmaan" />
                         </object>
                     </a>
                 </p>
+                -->
             </div>
         </footer>
     {% endblock %}
@@ -212,7 +213,7 @@
     <script src="{{ asset('bundles/kunstmaanadmin/js/libs/jquery.jstree.js') }}"></script>
     <script src="{{ asset('bundles/kunstmaanadmin/js/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('bundles/kunstmaanadmin/js/ckeditor/adapters/jquery.js') }}"></script>
-
+    <script src="{{ asset('bundles/kunstmaanadmin/js/ckeditor/plugins/colordialog/dialogs/colordialog.js') }}"></script>
     <!--Combined-->
     {% javascripts
         '@KunstmaanAdminBundle/Resources/public/js/libs/jquery-ui-1.10.0.custom.min.js'
@@ -246,6 +247,7 @@
         jQuery(document).ready(function(){
             jQuery('textarea.rich_editor').each(function(item){
                 var config = {};
+                config.extraPlugins = 'colorbutton';
                 if($(this).attr('height')){
                     config.height = $(this).attr('height');
                 }

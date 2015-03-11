@@ -9,63 +9,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ websitetitle | trans }}{% block title %}{% if page is defined and nodemenu.getActiveForDepth(2) is not null %} - {{ get_title_for(page) }}{% endif %}{% endblock %}</title>
-
     {% if page is defined %}
         {{ render_seo_metadata_for(page) }}
     {% endif %}
-
-    <!-- favicon - apple touch icons -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('apple-touch-icon-144x144-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset('apple-touch-icon-120x120-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('apple-touch-icon-114x114-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('apple-touch-icon-72x72-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon-precomposed.png') }}">
-
-    <!-- webfonts - should be included through css-method -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     {% block stylesheets %}
         {% stylesheets '@PyDevWebsiteBundle/Resources/public/css/main.css' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
     {% endblock %}
-
-    <!--[if lt IE 9]>
-    <script src="{{ asset('vendor/html5shiv/dist/html5shiv.js') }}"></script>
-    <![endif]-->
+    <!--[if lt IE 9]><script src="{{ asset('vendor/html5shiv/dist/html5shiv.js') }}"></script><![endif]-->
 </head>
 <body {% block extra_body_attributes %}{% endblock %}>
-{% block pagetitle %}
-{% endblock %}
-
-{% set children = nodemenu.current.node.children %}
-{% if nodemenu.current.node.children|length > 0 %}
-    {% set activeSubnode = nodemenu.getActiveForDepth(1) %}
-    {% include 'PyDevWebsiteBundle:Layout:submenu.html.twig' with {'items': activeSubnode.children} %}
-{% endif %}
-
-{% block menu %}
-{% endblock %}
-
-{% block content %}
-{% endblock %}
-
-{% block footer %}
-{% endblock %}
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-{% block js_includes %}
-    {% javascripts
-    '@PyDevWebsiteBundle/Resources/public/js/*'
+<div class="container-fluid">
+    {% set currentPage = get_page(nodemenu.current.node.refEntityName, nodemenu.current.nodeTranslation.publicNodeVersion.refId) %}
+    {% if currentPage|default and currentPage.backgroundColor|default %}
+        {% set bgColor = currentPage.backgroundColor %}
+    {% endif %}
+    {% set hasNodeMenu =
+    nodemenu.current.node.children|default and
+    nodemenu.current.node.children|length > 0 or
+    nodemenu.current.node.parent.children|default and
+    nodemenu.current.node.parent.children|length > 0
     %}
+    {% if hasNodeMenu %}
+    <div class="row row-sitemenu" {% if bgColor|default %}style="background-color: {{ bgColor }}"{% endif %}>
+        <div class="col-xs-12">
+            {% include 'PyDevWebsiteBundle:Layout:submenu.html.twig' with {'items': nodemenu.getActiveForDepth(1).children} %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="row row-title" {% if bgColor|default %}style="background-color: {{ bgColor }}"{% endif %}>
+        <div class="col-xs-12">
+            {% block pageTitle %}{% endblock %}
+        </div>
+    </div>
+
+    <div class="row row-pagemenu">
+        <div class="col-xs-12">
+            {% block menu %}{% endblock %}
+        </div>
+    </div>
+
+    <div class="row row-content">
+        <div class="col-xs-12">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            {% block footer %}{% endblock %}
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+{% block js_includes %}
+    {% javascripts '@PyDevWebsiteBundle/Resources/public/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
-
-{% block js_inits %}
-{% endblock %}
-
+{% block js_inits %}{% endblock %}
 </body>
 </html>

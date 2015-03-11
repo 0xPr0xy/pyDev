@@ -1,4 +1,10 @@
 {% extends 'PyDevWebsiteBundle:Page:layout.html.twig' %}
+{% block pageTitle %}
+    {% if page.title|default %}{{ page.title }}{% endif %}
+{% endblock %}
 {% block menu %}
     {{ render_pageparts(page, 'menu') }}
+{% endblock %}
+{% block content %}
+    {{ render_pageparts(page, 'main') }}
 {% endblock %}

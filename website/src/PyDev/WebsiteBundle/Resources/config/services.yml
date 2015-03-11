@@ -1,4 +1,6 @@
 services:
-#    py_dev_website.example:
-#        class: PyDev\WebsiteBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    pydev_website.twig_extension.page:
+        class: PyDev\WebsiteBundle\Twig\PageTwigExtension
+        arguments: [ '@doctrine.orm.entity_manager' ]
+        tags:
+            - { name: twig.extension }

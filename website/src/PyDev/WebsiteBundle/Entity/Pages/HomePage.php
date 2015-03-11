@@ -5,7 +5,6 @@ namespace PyDev\WebsiteBundle\Entity\Pages;
 use PyDev\WebsiteBundle\Form\Pages\HomePageAdminType;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kunstmaan\NodeBundle\Entity\AbstractPage;
 use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
 use Symfony\Component\Form\AbstractType;
 
@@ -15,7 +14,7 @@ use Symfony\Component\Form\AbstractType;
  * @ORM\Entity()
  * @ORM\Table(name="pydev_websitebundle_home_pages")
  */
-class HomePage extends AbstractPage  implements HasPageTemplateInterface
+class HomePage extends AbstractColoredPage  implements HasPageTemplateInterface
 {
 
     /**
@@ -46,7 +45,10 @@ class HomePage extends AbstractPage  implements HasPageTemplateInterface
      */
     public function getPagePartAdminConfigurations()
     {
-        return array('PyDevWebsiteBundle:menu');
+        return array(
+            'PyDevWebsiteBundle:menu',
+            'PyDevWebsiteBundle:main'
+        );
     }
 
     /**

@@ -1,18 +1,20 @@
 .tile-link-pp{
     position: relative;
-    width: 20%;
-    min-width: 85px;
+    min-width: 80px;
     max-width: 200px;
     overflow: hidden;
     background: #4679BD;
     float:left;
+}
+.container-fluid .menu .tile-link-pp .active {
+    background-color:black !important;
 }
 .tile-link-pp:before{
     content: "";
     display: block;
     padding-top: 100%;
 }
-.tile-link-pp-content{
+.tile-link-pp-content {
     position:  absolute;
     top: 0;
     left: 0;
@@ -35,4 +37,57 @@
     color:white;
     font-family: "Arial", Arial, sans-serif;
     text-decoration: none;
+}
+.col-xs-2,
+.col-xs-6,
+.col-xs-10,
+.col-xs-12 {
+    padding:0;
+    min-height: 0;
+}
+.container-fluid {
+    padding:0;
+}
+.row {
+    margin:0;
+    padding:0;
+}
+.row-title {
+    height:80px;
+}
+.row-title h1 {
+    color:white;
+    font-size:30px;
+    font-family: "Arial", Arial, sans-serif;
+    text-align: center;
+}
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+/* flip speed goes here */
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+    transform: rotateY(180deg);
 }
