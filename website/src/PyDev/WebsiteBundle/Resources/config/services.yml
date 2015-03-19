@@ -1,6 +1,1 @@
 services:
-    pydev_website.twig_extension.page:
-        class: PyDev\WebsiteBundle\Twig\PageTwigExtension
-        arguments: [ '@doctrine.orm.entity_manager' ]
-        tags:
-            - { name: twig.extension }
