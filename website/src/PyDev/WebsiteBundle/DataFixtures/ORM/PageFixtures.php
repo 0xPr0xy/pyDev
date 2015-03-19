@@ -60,13 +60,14 @@ class PageFixtures extends AbstractFixture implements OrderedFixtureInterface, C
      */
     private function createPages()
     {
+        // Prepare HomePage
         $homePage = new HomePage();
         $homePage->setTitle('Home');
         $homePage->setBackgroundColor('#0266C8');
 
         $translations = array();
-        $translations[] = array('language' => 'en', 'callback' => function(HomePage $page, NodeTranslation $translation, $seo) {
-            $translation->setTitle('Home');
+        $translations[] = array('language' => 'en', 'callback' => function(HomePage $homePage, NodeTranslation $translation, $seo) {
+            $translation->setTitle($homePage->getTitle());
             $translation->setSlug('');
         });
 
@@ -78,21 +79,24 @@ class PageFixtures extends AbstractFixture implements OrderedFixtureInterface, C
             'creator' => self::ADMIN_USERNAME
         );
 
+        // Create HomePagge
         $this->pageCreator->createPage($homePage, $translations, $options);
 
+        // Fetch HomePage
         $homePageRepository = $this->manager->getRepository(HomePage::class);
         $homePage = $homePageRepository->find(1);
 
+        // Define ContentPages Properties
         $pages = array(
-            array('color' => '#EA3F47', 'name' => 'Login'),
-            array('color' => '#EE8613', 'name' => 'Blog'),
-            array('color' => '#F4BD3F', 'name' => 'Projects'),
-            array('color' => '#93C814', 'name' => 'Gallery'),
-            array('color' => '#0B93C5', 'name' => 'Downloads'),
-            array('color' => '#2EB3DE', 'name' => 'Contact'),
-            array('color' => '#00933B', 'name' => 'About'),
+            array('color' => '#EA3F47', 'name' => 'Login', 'intro' => 'Log in to see more content', 'glyph' => 'glyphicon-console'),
+            array('color' => '#EE8613', 'name' => 'Blog', 'intro' => 'Reposts of hacker news lol', 'glyph' => 'glyphicon-list-alt'),
+            array('color' => '#F4BD3F', 'name' => 'Projects', 'intro' => 'Things that keep me busy', 'glyph' => 'glyphicon-blackboard'),
+            array('color' => '#93C814', 'name' => 'Gallery', 'intro' => 'Images of interesting things', 'glyph' => 'glyphicon-picture'),
+            array('color' => '#0B93C5', 'name' => 'Downloads', 'intro' => 'Goodies!', 'glyph' => 'glyphicon-cloud-download'),
+            array('color' => '#00933B', 'name' => 'About', 'intro' => 'Want to know more?', 'glyph' => 'glyphicon-info-sign'),
         );
 
+        // Batch create ContentPages
         $this->createContentPages($homePage, $pages);
     }
 
@@ -102,12 +106,12 @@ class PageFixtures extends AbstractFixture implements OrderedFixtureInterface, C
             $contentPage = new ContentPage();
             $contentPage->setTitle($pageItem['name']);
             $contentPage->setBackgroundColor($pageItem['color']);
-
+            $contentPage->setPageIntro($pageItem['intro']);
+            $contentPage->setGlyphIcon($pageItem['glyph']);
             $translations = array();
             $translations[] = array('language' => 'en', 'callback' => function(ContentPage $contentPage, NodeTranslation $translation) {
                 $translation->setTitle($contentPage->getTitle());
                 $translation->setSlug(strtolower($contentPage->getTitle()));
-                echo '> created ' . $contentPage->getTitle(), PHP_EOL;
             });
             $options = array(
                 'parent' => $homePage,

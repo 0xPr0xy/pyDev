@@ -28,6 +28,12 @@ class ContentPageAdminType extends AbstractColoredPageAdminType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
+        $builder->add('pageIntro', 'textarea', array(
+                'attr' => array('rows' => 10, 'cols' => 600),
+            ));
+        $builder->add('glyphIcon', 'text', array(
+                'required' => false,
+                ));
     }
 
     /**

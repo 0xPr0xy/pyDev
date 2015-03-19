@@ -1,7 +1,8 @@
 {% extends 'PyDevWebsiteBundle:Page:layout.html.twig' %}
 
 {% block pageTitle %}
-    {% if page.title|default %}<h1>{{ page.title }}</h1>{% endif %}
+    {% if page.title|default %}<h1><span class="glyphicon {{ page.glyphIcon|default }}" aria-hidden="true"></span> <span>{{ page.title }}</span></h1>{% endif %}
+    {% if page.pageIntro|default %}<h2>{{ page.pageIntro|truncate(80) }}</h2>{% endif %}
 {% endblock %}
 
 {% block content %}

@@ -30,25 +30,18 @@
 </head>
 <body {% block extra_body_attributes %}{% endblock %}>
 <div class="container-fluid">
-    {% set currentPage = get_page(nodemenu.current.node.refEntityName, nodemenu.current.nodeTranslation.publicNodeVersion.refId) %}
-    {% if currentPage|default and currentPage.backgroundColor|default %}
-        {% set bgColor = currentPage.backgroundColor %}
-    {% endif %}
-    {% set hasNodeMenu =
-    nodemenu.current.node.children|default and
-    nodemenu.current.node.children|length > 0 or
-    nodemenu.current.node.parent.children|default and
-    nodemenu.current.node.parent.children|length > 0
-    %}
-    {% if hasNodeMenu %}
-    <div class="row row-sitemenu" {% if bgColor|default %}style="background-color: {{ bgColor }}"{% endif %}>
+
+    {% set bgColor = page.backgroundColor|default('#444444') %}
+    {% if nodemenu %}
+    <div class="row row-sitemenu" style="background-color: {{ bgColor }}">
         <div class="col-xs-12">
-            {% include 'PyDevWebsiteBundle:Layout:submenu.html.twig' with {'items': nodemenu.getActiveForDepth(1).children} %}
+            {% set items = [[nodemenu.getActiveForDepth(1)],nodemenu.getActiveForDepth(1).children] %}
+            {% include 'PyDevWebsiteBundle:Layout:submenu.html.twig' with {'items': items } %}
         </div>
     </div>
     {% endif %}
 
-    <div class="row row-title" {% if bgColor|default %}style="background-color: {{ bgColor }}"{% endif %}>
+    <div class="row row-title" style="background-color: {{ bgColor }}">
         <div class="col-xs-12">
             {% block pageTitle %}{% endblock %}
         </div>

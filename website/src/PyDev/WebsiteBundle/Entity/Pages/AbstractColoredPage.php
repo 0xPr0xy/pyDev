@@ -6,17 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Kunstmaan\NodeBundle\Entity\AbstractPage;
 use PyDev\WebsiteBundle\Form\Pages\AbstractColoredPageAdminType;
 
-/**
- * @ORM\MappedSuperclass
- * @ORM\HasLifecycleCallbacks
- */
+
 abstract class AbstractColoredPage extends AbstractPage
 {
     /**
      * @var string
      * @ORM\Column(name="background_color", type="string", length=255, nullable=true)
      */
-    private $backgroundColor;
+    protected $backgroundColor;
 
     /**
      * Set backgroundColor

@@ -1,13 +1,10 @@
-.tile-link-pp{
+.tile-link-pp {
     position: relative;
     min-width: 80px;
     max-width: 200px;
     overflow: hidden;
     background: #4679BD;
     float:left;
-}
-.container-fluid .menu .tile-link-pp .active {
-    background-color:black !important;
 }
 .tile-link-pp:before{
     content: "";
@@ -53,7 +50,8 @@
     padding:0;
 }
 .row-title {
-    height:80px;
+    min-height:80px;
+    max-height:160px;
 }
 .row-title h1 {
     color:white;
@@ -61,33 +59,71 @@
     font-family: "Arial", Arial, sans-serif;
     text-align: center;
 }
-/* flip the pane when hovered */
-.flip-container:hover .flipper, .flip-container.hover .flipper {
-    transform: rotateY(180deg);
+
+.row-title h2 {
+    color:white;
+    font-size:20px;
+    font-family: "Arial", Arial, sans-serif;
+    text-align: center;
+}
 }
 
-/* flip speed goes here */
+/* 3d animation */
 .flipper {
+    -moz-transform: perspective(1000px);
+    -moz-transform-style: preserve-3d;
+}
+
+.front, .back {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+
+    -moz-transition: 0.6s;
+    -moz-transform-style: preserve-3d;
+
+    -o-transition: 0.6s;
+    -o-transform-style: preserve-3d;
+
+    -ms-transition: 0.6s;
+    -ms-transform-style: preserve-3d;
+
     transition: 0.6s;
     transform-style: preserve-3d;
-}
 
-/* hide back of pane during swap */
-.front, .back {
-    backface-visibility: hidden;
+
     position: absolute;
     top: 0;
     left: 0;
 }
 
-/* front pane, placed above back */
-.front {
-    z-index: 2;
-    /* for firefox 31 */
+.back {
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.flip-container:hover .back, .flip-container.hover .back {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
     transform: rotateY(0deg);
 }
 
-/* back, initially hidden pane */
-.back {
+.flip-container:hover .front, .flip-container.hover .front {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
+}
+
+.front {
+    z-index: 2;
 }

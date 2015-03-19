@@ -1,38 +1,27 @@
 <nav role="navigation">
     <div class="menu">
-        <div class='tile-link-pp'>
-            <div class='tile-link-pp-content' style="background-color:crimson">
-                <a href="{{ path('_slug', { 'url': '' }) }}">
-                    <div>
-                        <span>
-                            Home
-                        </span>
+        {% for item in items %}
+            {% for nodeMenuItem in item %}
+                {% set page = nodeMenuItem.getPage() %}
+                {% if page|default %}
+                    <div class='tile-link-pp flip-container'>
+                        <div class='tile-link-pp-content flipper {% if nodemenu.current == nodeMenuItem %}active{% endif %}'>
+                            <a href="{{ path('_slug', { 'url': nodeMenuItem.slug }) }}">
+                                <div class="front" style="background-color:{{ page.backgroundColor }};">
+                                        <span>
+                                            {{ nodeMenuItem.title }}
+                                        </span>
+                                </div>
+                                <div class="back" style="background-color:{{ page.backgroundColor }};">
+                                        <span>
+                                            {{ page.pageIntro|default }}
+                                        </span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </a>
-            </div>
-        </div>
-        {% for nodeMenuItem in items %}
-        {% if not nodeMenuItem.node.isHiddenFromNav() %}
-            {% set page = get_page(nodeMenuItem.node.refEntityName, nodeMenuItem.nodeTranslation.publicNodeVersion.refId) %}
-            {% if page|default %}
-                <div class='tile-link-pp flip-container'>
-                    <div class='tile-link-pp-content flipper {% if nodemenu.current == nodeMenuItem %}active{% endif %}' style="background-color:{{ page.backgroundColor }};">
-                        <a href="{{ path('_slug', { 'url': nodeMenuItem.slug }) }}">
-                            <div class="front">
-                                    <span>
-                                        {{ nodeMenuItem.title }}
-                                    </span>
-                            </div>
-                            <div class="back">
-                                    <span>
-                                        info: {{ page.backgroundColor }}
-                                    </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            {% endif %}
-        {% endif %}
-    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
     </div>
 </nav>
