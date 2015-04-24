@@ -1,128 +1,14 @@
-.tile-link-pp {
-    position: relative;
-    min-width: 80px;
-    max-width: 200px;
-    overflow: hidden;
-    background: #4679BD;
-    float:left;
+.navbar-sleek, .btn-sleek {
+    border:none;
+    background-image:none;
 }
-.tile-link-pp:before{
-    content: "";
-    display: block;
-    padding-top: 100%;
+.btn-sleek {
+    text-shadow:none;
+    background-color: #dbdbdb;
 }
-.tile-link-pp-content {
-    position:  absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    color: white;
+.thumbnail {
+    border:none;
 }
-.tile-link-pp-content div {
-    display: table;
-    width: 100%;
-    height: 100%;
-}
-.tile-link-pp-content span {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    color: white
-}
-.tile-link-pp a {
-    color:white;
-    font-family: "Arial", Arial, sans-serif;
-    text-decoration: none;
-}
-.col-xs-2,
-.col-xs-6,
-.col-xs-10,
-.col-xs-12 {
-    padding:0;
-    min-height: 0;
-}
-.container-fluid {
-    padding:0;
-}
-.row {
-    margin:0;
-    padding:0;
-}
-.row-title {
-    min-height:80px;
-    max-height:160px;
-}
-.row-title h1 {
-    color:white;
-    font-size:30px;
-    font-family: "Arial", Arial, sans-serif;
-    text-align: center;
-}
-
-.row-title h2 {
-    color:white;
-    font-size:20px;
-    font-family: "Arial", Arial, sans-serif;
-    text-align: center;
-}
-
-/* 3d animation */
-.flipper {
-    -moz-transform: perspective(1000px);
-    -moz-transform-style: preserve-3d;
-}
-
-.front, .back {
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
-    backface-visibility: hidden;
-
-    -webkit-transition: 0.6s;
-    -webkit-transform-style: preserve-3d;
-
-    -moz-transition: 0.6s;
-    -moz-transform-style: preserve-3d;
-
-    -o-transition: 0.6s;
-    -o-transform-style: preserve-3d;
-
-    -ms-transition: 0.6s;
-    -ms-transform-style: preserve-3d;
-
-    transition: 0.6s;
-    transform-style: preserve-3d;
-
-
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.back {
-    -webkit-transform: rotateY(-180deg);
-    -moz-transform: rotateY(-180deg);
-    -o-transform: rotateY(-180deg);
-    -ms-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-}
-
-.flip-container:hover .back, .flip-container.hover .back {
-    -webkit-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -o-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-}
-
-.flip-container:hover .front, .flip-container.hover .front {
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
-
-.front {
-    z-index: 2;
+h1, h2, h3, h4, span, small, p, a, button, input {
+    font-family: 'Ubuntu', sans-serif;
 }

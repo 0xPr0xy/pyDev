@@ -1,5 +1,6 @@
 imports:
     - { resource: config_base.yml }
+    - { resource: @ImageEditorBundle/Resources/config/config.yml }
 
 framework:
     esi:                { enabled: true }
@@ -69,11 +70,11 @@ parameters:
 
 stof_doctrine_extensions:
     default_locale: %defaultlocale%
-    #translation_fallback: true
+    translation_fallback: true
     orm:
         default:
             loggable: true
-            #translatable: true
+            translatable: true
             sluggable: true
 
 liip_imagine:
@@ -83,6 +84,15 @@ liip_imagine:
     data_root: %kernel.root_dir%/../web
     formats : ['jpg', 'jpeg','png', 'gif', 'bmp']
     filter_sets:
+        runtime_filter:
+            filters:
+                thumbnail: {  }
+        project_image:
+            filters:
+                 relative_resize: { widen: 400 }
+        thumb_image_200:
+            filters:
+                 thumbnail: { size: [200,200], mode: inbound }
         optim:
             quality: 85
             format: jpg

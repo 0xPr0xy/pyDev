@@ -38,7 +38,7 @@ class AppKernel extends Kernel
             new Kunstmaan\AdminListBundle\KunstmaanAdminListBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Kunstmaan\SearchBundle\KunstmaanSearchBundle(),
-            //new Kunstmaan\NodeSearchBundle\KunstmaanNodeSearchBundle(),
+            new Kunstmaan\NodeSearchBundle\KunstmaanNodeSearchBundle(),
             new Kunstmaan\SitemapBundle\KunstmaanSitemapBundle(),
             new Kunstmaan\ArticleBundle\KunstmaanArticleBundle(),
 //            new Kunstmaan\TranslatorBundle\KunstmaanTranslatorBundle(),
@@ -46,7 +46,9 @@ class AppKernel extends Kernel
 //            new Kunstmaan\RedirectBundle\KunstmaanRedirectBundle(),
             new Kunstmaan\UserManagementBundle\KunstmaanUserManagementBundle(),
             //new Kunstmaan\DashboardBundle\KunstmaanDashboardBundle(),
+            new PyDev\ImageEditorBundle\ImageEditorBundle(),
             new PyDev\WebsiteBundle\PyDevWebsiteBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev'))) {

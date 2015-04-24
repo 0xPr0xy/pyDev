@@ -3,3 +3,14 @@ pydevwebsitebundle_default:
     type:     annotation
     prefix:   /
 
+
+
+pydevwebsitebundle_newspage_admin_list:
+    resource: @PyDevWebsiteBundle/Controller/News/NewsPageAdminListController.php
+    type:     annotation
+    prefix:   /admin/newspage/
+
+pydevwebsitebundle_newsauthor_admin_list:
+    resource: @PyDevWebsiteBundle/Controller/News/NewsAuthorAdminListController.php
+    type:     annotation
+    prefix:   /admin/newsauthor/

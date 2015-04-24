@@ -18,7 +18,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('apple-touch-icon-114x114-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('apple-touch-icon-72x72-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon-precomposed.png') }}">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500' rel='stylesheet' type='text/css'>
+    {#<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>#}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     {% block stylesheets %}
@@ -29,41 +30,31 @@
     <!--[if lt IE 9]><script src="{{ asset('vendor/html5shiv/dist/html5shiv.js') }}"></script><![endif]-->
 </head>
 <body {% block extra_body_attributes %}{% endblock %}>
-<div class="container-fluid">
 
-    {% set bgColor = page.backgroundColor|default('#444444') %}
-    {% if nodemenu %}
-    <div class="row row-sitemenu" style="background-color: {{ bgColor }}">
-        <div class="col-xs-12">
-            {% set items = [[nodemenu.getActiveForDepth(1)],nodemenu.getActiveForDepth(1).children] %}
-            {% include 'PyDevWebsiteBundle:Layout:submenu.html.twig' with {'items': items } %}
-        </div>
+{% if nodemenu %}
+    {% set items = nodemenu.getActiveForDepth(1).children %}
+    {% include 'PyDevWebsiteBundle:Layout:menu.html.twig' with {'items': items } %}
+{% endif %}
+
+<div class="container">
+{% block pageTitle %}
+    {% if page.title|default %}
+    <div class="jumbotron">
+        <h1>
+                <span style="color: {{ page.backgroundColor|default }}" class="glyphicon {{ page.glyphIcon|default }}" aria-hidden="true"></span>
+                {{ page.title }}
+            {% if page.pageIntro|default %}
+                <small style="color: {{ page.backgroundColor|default }}">
+                    {{ page.pageIntro|truncate(80) }}
+                </small>
+            {% endif %}
+        </h1>
     </div>
     {% endif %}
-
-    <div class="row row-title" style="background-color: {{ bgColor }}">
-        <div class="col-xs-12">
-            {% block pageTitle %}{% endblock %}
-        </div>
-    </div>
-
-    <div class="row row-pagemenu">
-        <div class="col-xs-12">
-            {% block menu %}{% endblock %}
-        </div>
-    </div>
-
-    <div class="row row-content">
-        <div class="col-xs-12">
-            {% block content %}{% endblock %}
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12">
-            {% block footer %}{% endblock %}
-        </div>
-    </div>
+{% endblock %}
+{% block menu %}{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

@@ -44,7 +44,12 @@ class ContentPage extends AbstractColoredPage implements HasPageTemplateInterfac
      */
     public function getPossibleChildTypes()
     {
-        return array();
+        return array(
+            array(
+                'name' => 'Page',
+                'class' => ContentPage::class
+            )
+        );
     }
 
     /**

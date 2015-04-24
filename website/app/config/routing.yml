@@ -2,6 +2,10 @@ py_dev_website:
     resource: "@PyDevWebsiteBundle/Resources/config/routing.yml"
     prefix:   /
 
+py_dev_imageeditor:
+    resource: "@ImageEditorBundle/Resources/config/routing.yml"
+    prefix:   /edit_image
+
 # KunstmaanMediaBundle
 _imagine:
     resource: .

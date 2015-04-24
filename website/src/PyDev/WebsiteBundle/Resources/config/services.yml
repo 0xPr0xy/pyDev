@@ -1,1 +1,7 @@
 services:
+
+    pydevwebsitebundle.news.menu.adaptor:
+        class: PyDev\WebsiteBundle\Helper\Menu\NewsMenuAdaptor
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: kunstmaan_admin.menu.adaptor }

@@ -1,0 +1,5 @@
+<div class="image-pp col-md-3">
+    {% if resource.image is not empty %}
+    <a href="{{ asset(resource.image.url) }}" class="thumbnail"><img src="{{ asset(resource.image.url|imagine_filter('thumb_image_200')) }}" {% if resource.imageAltText is not empty %}alt="{{ resource.imageAltText }}"{% endif %} /></a>
+    {% endif %}
+</div>

@@ -1,0 +1,14 @@
+<div class="project-pp row">
+    <div class="col-md-6">
+        <h2>{{ resource.title }}</h2>
+        {{ resource.description|raw }}
+        <a href="{{ resource.linkUrl }}" {% if resource.linkNewWindow %}target="_blank"{% endif %}>{{ resource.linkText }}</a>
+    </div>
+    <div class="col-md-6">
+        {% if resource.image is not empty %}
+        <a href="{{ asset(resource.image.url)}}" class="thumbnail">
+            <img src="{{ asset(resource.image.url|imagine_filter('project_image')) }}" {% if resource.imageAltText is not empty %}alt="{{ resource.imageAltText }}"{% endif %} />
+        </a>
+        {% endif %}
+    </div>
+</div>

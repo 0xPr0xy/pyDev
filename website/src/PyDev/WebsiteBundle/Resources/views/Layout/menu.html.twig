@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default navbar-static-top navbar-sleek">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a style="color:{{ page.backgroundColor|default }}" class="navbar-brand" href="{{ path('_slug', { 'url': '' }) }}">pyDev</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                {% for nodeMenuItem in items %}
+                    {% if nodeMenuItem.node.children|length > 0 and not nodeMenuItem.node.isHiddenFromNav() %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ nodeMenuItem.title }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                            {% for subNodeMenuItem in nodeMenuItem.getChildren() %}
+                                <li{% if nodemenu.current == subNodeMenuItem %} class="active"{% endif %}>
+                                    <a href="{{ path('_slug', { 'url': subNodeMenuItem.slug }) }}">{{ subNodeMenuItem.title }}</a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </li>
+                    {% else %}
+                        {% if not nodeMenuItem.node.isHiddenFromNav() %}
+                        <li{% if nodemenu.current == nodeMenuItem %} class="active"{% endif %}>
+                            <a href="{{ path('_slug', { 'url': nodeMenuItem.slug }) }}">{{ nodeMenuItem.title }}</a>
+                        </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <form class="navbar-form navbar-right" role="search" action="{{ path('_slug', { 'url': 'search' }) }}">
+                <div class="form-group">
+                    <input type="text" name="query" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default btn-sleek">Submit</button>
+            </form>
+        </div>
+    </div>
+</nav>
