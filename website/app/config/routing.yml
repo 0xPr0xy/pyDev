@@ -30,6 +30,11 @@ KunstmaanPagePartBundle:
     resource: "@KunstmaanPagePartBundle/Resources/config/routing.yml"
     prefix:   /
 
+# KunstmaanSeoBundle
+KunstmaanSeoBundle:
+    resource: "@KunstmaanSeoBundle/Resources/config/routing.yml"
+    prefix:   /
+
 # KunstmaanFormBundle
 KunstmaanFormBundle:
     resource: "@KunstmaanFormBundle/Resources/config/routing.yml"
