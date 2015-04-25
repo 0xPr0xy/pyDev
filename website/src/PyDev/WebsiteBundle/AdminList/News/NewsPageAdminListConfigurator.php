@@ -36,8 +36,15 @@ class NewsPageAdminListConfigurator extends AbstractArticlePageAdminListConfigur
      */
     public function adaptQueryBuilder(QueryBuilder $queryBuilder)
     {
-        parent::adaptQueryBuilder($queryBuilder);
-
+        //parent::adaptQueryBuilder($queryBuilder);
+        //untill merged https://github.com/Kunstmaan/KunstmaanBundlesCMS/pull/345
+        $queryBuilder->innerJoin('b.node', 'n', 'WITH', 'b.node = n.id');
+        $queryBuilder->innerJoin('b.nodeVersions', 'nv', 'WITH', 'b.publicNodeVersion = nv.id');
+        $queryBuilder->andWhere('b.lang = :lang');
+        $queryBuilder->andWhere('n.deleted = 0');
+        $queryBuilder->andWhere('n.refEntityName = :class');
+        $queryBuilder->addOrderBy("b.updated", "DESC");
+        $queryBuilder->setParameter('lang', $this->locale);
         $queryBuilder->setParameter('class', 'PyDev\WebsiteBundle\Entity\News\NewsPage');
     }
 
